@@ -13,6 +13,7 @@
   "conform.nvim": { "branch": "master", "commit": "c4b2efb8aee4af0ef179a9b49ba401de3c4ef5d2" },
   "crates.nvim": { "branch": "main", "commit": "6d779c7b85139d89d92a4a0bcf0afbdcf0cd961a" },
   "dashboard-nvim": { "branch": "master", "commit": "63df28409d940f9cac0a925df09d3dc369db9841" },
+  "diffview.nvim": { "branch": "main", "commit": "3dc498c9777fe79156f3d32dddd483b8b3dbd95f" },
   "dressing.nvim": { "branch": "master", "commit": "94b0d24483d56f3777ee0c8dc51675f21709318c" },
   "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
   "friendly-snippets": { "branch": "main", "commit": "53d3df271d031c405255e99410628c26a8f0d2b0" },

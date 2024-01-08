@@ -1,1 +1,10 @@
-return {}
+return {
+  {
+    "nvimdev/dashboard-nvim",
+    opts = function(_, opts)
+      -- opts.config = {
+      --   header = header,
+      -- }
+    end,
+  },
+}
