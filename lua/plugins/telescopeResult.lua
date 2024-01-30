@@ -21,7 +21,7 @@ local function filenameFirst(_, path)
 
   local dirArr = {}
 
-  for dir in parent:gmatch("[^/]+") do
+  for dir in parent:gmatch("[\\/]+([^\\/]+)") do
     dirArr[#dirArr + 1] = dir
   end
 
