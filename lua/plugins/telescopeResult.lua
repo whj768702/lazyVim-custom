@@ -49,11 +49,11 @@ return {
     pickers = {
       -- 文件搜索展示结果
       find_files = {
-        path_display = filenameFirst,
+        path_display = filenameFullPath,
       },
       -- grep搜索展示结果
       live_grep = {
-        path_display = filenameFirst,
+        path_display = filenameFullPath,
       },
       -- buffers搜索展示结果
       buffers = {
