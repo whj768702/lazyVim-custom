@@ -11,37 +11,29 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- 展示文件路径
-local function filenameFullPath(_, path)
-  local dirs = {}
-
-  -- 使用模式匹配分割兼容不同平台
-  for dir in string.gmatch(path, "[\\/]+([^\\/]+)") do
-    table.insert(dirs, 1, dir)
-  end
-
-  local tail = vim.fs.basename(path)
-  local parent1 = dirs[#dirs - 1]
-  local parent2 = dirs[#dirs - 2]
-  local parent3 = dirs[#dirs - 3]
-
-  if parent3 then
-    return string.format("%s\t\t%s\\%s\\%s", tail, parent1, parent2, parent3)
-  elseif parent2 then
-    return string.format("%s\t\t%s\\%s", tail, parent1, parent2)
-  elseif parent1 then
-    return string.format("%s\t\t%s", tail, parent1)
-  else
-    return tail
-  end
-end
-
 local function filenameFirst(_, path)
   local tail = vim.fs.basename(path)
   local parent = vim.fs.dirname(path)
+
   if parent == "." then
     return tail
   end
-  return string.format("%s\t\t%s", tail, parent)
+
+  local dirArr = {}
+
+  for dir in parent:gmatch("[^/]+") do
+    dirArr[#dirArr + 1] = dir
+  end
+
+  if #dirArr == 0 then
+    return tail
+  elseif #dirArr == 1 then
+    return string.format("%s\t\t%s", tail, dirArr[1])
+  elseif #dirArr == 2 then
+    return string.format("%s\t\t%s/%s", tail, dirArr[1], dirArr[2])
+  elseif #dirArr >= 3 then
+    return string.format("%s\t\t%s/%s/%s", tail, dirArr[#dirArr - 2], dirArr[#dirArr - 1], dirArr[#dirArr])
+  end
 end
 
 return {
@@ -49,16 +41,15 @@ return {
     pickers = {
       -- 文件搜索展示结果
       find_files = {
-        path_display = filenameFullPath,
+        path_display = filenameFirst,
       },
       -- grep搜索展示结果
       live_grep = {
-        path_display = filenameFullPath,
+        path_display = filenameFirst,
       },
       -- buffers搜索展示结果
       buffers = {
-        -- path_display = filenameFirst,
-        path_display = filenameFullPath,
+        path_display = filenameFirst,
       },
     },
   }),
