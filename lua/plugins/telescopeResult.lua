@@ -47,6 +47,14 @@ return {
       live_grep = {
         path_display = filenameFirst,
       },
+      -- grep_string搜索展示结果
+      grep_string = {
+        path_display = filenameFirst,
+      },
+      -- git搜索展示结果
+      git_files = {
+        path_display = filenameFirst,
+      },
       -- buffers搜索展示结果
       buffers = {
         path_display = filenameFirst,
